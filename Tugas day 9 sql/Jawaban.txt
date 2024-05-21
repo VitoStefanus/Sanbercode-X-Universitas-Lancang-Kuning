@@ -1,0 +1,40 @@
+1. Buat Database "library”
+- CREATE DATABASE library;
+
+2.Tabel-tabel dalam Database
+a.Tabel User
+-CREATE TABLE users (id INT PRIMARY KEY AUTO_INCREMENT, name varchar(255) NOT null, email varchar(255) NOT null, password varchar(255) NOT null);
+
+b.Tabel Categories
+-CREATE TABLE categories(id INT PRIMARY KEY AUTO_INCREMENT, name varchar(255) NOT null);
+
+c.Tabel Books
+-CREATE TABLE books (id INT PRIMARY KEY AUTO_INCREMENT, title varchar(255) NOT null,summary text NOT null, stock INT NOT null, category_id INT NOT null, FOREIGN KEY (category_id) REFERENCES categories (id));
+
+3.Masukkan data pada Tabel-tabel
+a.Tabel User
+-INSERT INTO users (name, email, password) VALUES ("Vito Stefanus", "vitostefanus31@gmail.com", "vito3113");
+-INSERT INTO users (name, email, password) VALUES ("Jane Doe", "jane@doe.com", "jenita123");
+
+b.Tabel Categories
+-INSERT INTO categories (name) VALUES ("Novel"), ("Manga"), ("Comic"), ("History"), ("IT");
+
+c.Tabel Books
+-INSERT INTO books (title, summary, stock, category_id) VALUES ("One piece", "The series focuses on Monkey D Luffy, a young man made of rubber", 50, 2);
+-INSERT INTO books (title, summary, stock, category_id) VALUES ("Laskar Pelangi", "Belitung is known for its richness in tin, making it one of Indonesia's richest islands", 25, 1);
+INSERT INTO books (title, summary, stock, category_id) VALUES ("Your Name", "Mitsuha Miyamizu, a high school girl living in the fictional town of Itomori in Gifu Prefecture's", 15, 2);
+
+4.Mengambil data dari Database
+a.Mengambil data User
+-SELECT id, name, email FROM users;
+
+b.Mengambil data Books
+-SELECT * FROM books WHERE stock > 20;
+-SELECT * FROM `books` WHERE title LIKE '%one%';
+
+c.Menampilkan data items books dengan categories
+-SELECT books.*, categories.name FROM books INNER JOIN categories on books.category_id = categories.id;
+
+5.Mengubah Data dari Database
+Tabel Books
+-UPDATE books SET stock = 30 WHERE id = 1;
