@@ -19,3 +19,14 @@ Route::get('/', [HomeController::class, 'home']);
 Route::get('/register', [AuthController::class, 'register']);
 
 Route::post('/welcome', [AuthController::class, 'Welcome']);
+
+Route::get('/dashboard', function(){
+    return view('welcome');
+});
+Route::get('/table', function(){
+    return view('tables.table');
+});
+
+Route::get('/data-table', function(){
+    return view('tables.data-table');
+});
