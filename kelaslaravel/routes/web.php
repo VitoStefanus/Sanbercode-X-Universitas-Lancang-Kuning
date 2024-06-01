@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CastController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +22,20 @@ Route::get('/register', [AuthController::class, 'register']);
 
 Route::post('/welcome', [AuthController::class, 'Welcome']);
 
+// dashboard
 Route::get('/dashboard', function(){
     return view('welcome');
 });
+
+// data
 Route::get('/table', function(){
     return view('tables.table');
 });
 
+// data-table
 Route::get('/data-table', function(){
     return view('tables.data-table');
 });
+
+// crud cast
+Route::resource('cast', CastController::class);
